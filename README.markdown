@@ -1,5 +1,5 @@
 # Markdown Previewer
 
-A Pen created on CodePen.io. Original URL: [https://codepen.io/compdelta/pen/XWXgzmJ](https://codepen.io/compdelta/pen/XWXgzmJ).
+Markdown Previewer, built with React as part of the freeCodeCamp Front End Libraries certification projects.
 
 
