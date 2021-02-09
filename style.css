@@ -1,13 +1,13 @@
 body {
   height: 100%;
   margin: 0;
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
 }
 
 #title {
   margin-top: 10px;
   margin-bottom: 40px;
-  font-family: 'Barlow';
+  font-family: "Barlow";
   color: #000000;
   text-align: center;
 }
@@ -23,7 +23,7 @@ body {
 }
 
 #preview {
-  background-color: #CCCCCC;
+  background-color: #cccccc;
   text-align: left;
   width: 100%;
   max-width: 600px;
@@ -36,4 +36,8 @@ body {
 
 h2 {
   font-size: 1.4rem;
+}
+
+[class*="col-"] {
+  margin-bottom: 3em;
 }

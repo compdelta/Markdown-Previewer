@@ -1,9 +1,8 @@
 marked.setOptions({
-  breaks: true });
+  breaks: true,
+});
 
-
-const sampleMarkdown =
-`# Welcome to my React Markdown Previewer!
+const sampleMarkdown = `# Welcome to my React Markdown Previewer!
 
 ## This is a sub-header.
 
@@ -34,15 +33,15 @@ Here is some code, \`<div></div>\`, between 2 backticks.
 
 And finally, an embedded image:
 
-![React Logo w/ Text](https://goo.gl/Umyytc)
+![React Logo](./react_logo.png)
 `;
 
 class MarkdownPreviewer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      markdown: sampleMarkdown };
-
+      markdown: sampleMarkdown,
+    };
   }
 
   updateMarkdown(markdown) {
@@ -50,31 +49,49 @@ class MarkdownPreviewer extends React.Component {
   }
 
   render() {
-    return (
-      React.createElement("div", { id: "wrapper" },
-      React.createElement("div", { id: "title" },
-      React.createElement("h1", null, "Markdown Previewer")),
+    return React.createElement(
+      "div",
+      { id: "wrapper" },
+      React.createElement(
+        "div",
+        { id: "title" },
+        React.createElement("h1", null, "Markdown Previewer")
+      ),
 
+      React.createElement(
+        "div",
+        { className: "row", align: "center" },
 
-      React.createElement("div", { className: "row", align: "center" },
+        React.createElement(
+          "div",
+          { className: "col-md-6" },
+          React.createElement("h2", null, "Markdown editor"),
+          React.createElement("textarea", {
+            id: "editor",
+            value: this.state.markdown,
+            onChange: (e) => {
+              this.updateMarkdown(e.target.value);
+            },
+          })
+        ),
 
-      React.createElement("div", { className: "col-md-6" },
-      React.createElement("h2", null, "Markdown editor"),
-      React.createElement("textarea", { id: "editor", value: this.state.markdown, onChange: e => {this.updateMarkdown(e.target.value);} })),
+        React.createElement(
+          "div",
+          { className: "col-md-6" },
+          React.createElement("h2", null, "Preview"),
+          React.createElement("div", {
+            dangerouslySetInnerHTML: {
+              __html: marked(this.state.markdown),
+            },
+            id: "preview",
+          })
+        )
+      )
+    );
+  }
+}
 
-
-
-      React.createElement("div", { className: "col-md-6" },
-      React.createElement("h2", null, "Preview"),
-      React.createElement("div", { dangerouslySetInnerHTML: {
-          __html: marked(this.state.markdown) },
-        id: "preview" })))));
-
-
-
-
-
-  }}
-
-
-ReactDOM.render(React.createElement(MarkdownPreviewer, null), document.getElementById('App'));
+ReactDOM.render(
+  React.createElement(MarkdownPreviewer, null),
+  document.getElementById("App")
+);
